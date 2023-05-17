@@ -81,7 +81,7 @@ public class ReviewDAO extends DBContext{
     }
     
     public float tinhSao(int id){  
-        String sql = "select SUM(star) AS sum, COUNT(star) AS count from review where id_product=" + id;
+        String sql = "select SUM(star) AS sum, COUNT(star) AS count from review where star != 0 and id_product=" + id;
         int tong =0, dem=0;
         try {
             PreparedStatement ps = conn.prepareStatement(sql);

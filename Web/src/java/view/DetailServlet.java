@@ -118,6 +118,7 @@ public class DetailServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        //String star_raw = "";
         String idu_raw = request.getParameter("id_u");
         String idp_raw = request.getParameter("id_p");
         String star_raw = request.getParameter("star");
@@ -130,6 +131,7 @@ public class DetailServlet extends HttpServlet {
         try{
             idp = Integer.parseInt(idp_raw); 
             idu = Integer.parseInt(idu_raw);
+            star = Integer.parseInt(star_raw);
             Product sp = p.layTheoId(idp);
             Users a = u.layTheoId(idu);
             request.setAttribute("data", sp);
@@ -137,8 +139,18 @@ public class DetailServlet extends HttpServlet {
             ArrayList<Product> l = p.layTheoLoai(c.layTheoTen(sp.getCategory_id().getName())); 
             request.setAttribute("data2", l);
             
-            if(!star_raw.equals(null) && !star_raw.equals("") && !content.equals(null) && !content.equals("")){ 
-                star = Integer.parseInt(star_raw);
+            if(star==0){ 
+                //star = Integer.parseInt(star_raw);
+                Review f = r.check(idu, idp);
+                if(f==null){
+                    Review b = new Review(0,a,sp,0,content,df.format(new Date()),0); 
+                    r.themReview(b);
+                }else{
+                    Review b = new Review(f.getId(),a,sp,f.getStar(),content,df.format(new Date()),0); 
+                    r.update(b); 
+                }
+            } else if(star!=0){   
+                //star = Integer.parseInt(star_raw);
                 Review f = r.check(idu, idp);
                 if(f==null){
                     Review b = new Review(0,a,sp,star,content,df.format(new Date()),0); 
@@ -148,6 +160,17 @@ public class DetailServlet extends HttpServlet {
                     r.update(b); 
                 }
             }
+//            } else if(star_raw.equals(null) || star_raw.isEmpty()){ 
+//                //star = Integer.parseInt(star_raw);
+//                Review f = r.check(idu, idp);
+//                if(f==null){
+//                    Review b = new Review(0,a,sp,0,content,df.format(new Date()),0); 
+//                    r.themReview(b);
+//                }else{
+//                    Review b = new Review(f.getId(),a,sp,f.getStar(),content,df.format(new Date()),0); 
+//                    r.update(b); 
+//                }
+//            }
             ArrayList<Review> list = r.layTheoId(idp);
             Collections.sort(list); 
         int page ,numperpage =5;

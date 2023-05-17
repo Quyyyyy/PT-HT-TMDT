@@ -301,6 +301,7 @@
                                         <div class="item-rate">
                                             <div class="comment-rate">
                                                 <%
+                                                    if(i.getStar()!=0){
                                                     for (int j = 0; j < (int ) i.getStar(); j++) {
                                                 %>
                                                 <i class="fa fa-star"></i>                           
@@ -310,6 +311,7 @@
                                                 <i class="fa fa-star-o"></i>                           
                                                 <%
                                                     } 
+                                                }
                                                 %>
                                             </div>
                                         </div>
@@ -378,6 +380,7 @@
                                 <p style="text-align: center; font-size: 16px; font-weight: bold;">Bạn nghĩ sao về sản phẩm này?</p>
                                 <div id="rateContainer" style="display: flex; justify-content: center;">
                                     <div style="display: flex; align-items: baseline; margin-right: 20px;">
+                                        <input checked="checked" type="radio" name="star" value="0" hidden="true">
                                         <input type="radio" id="1sao" name="star" value="1">
                                         <div class="starContainer">
                                             <i class="fa fa-star"></i>   
