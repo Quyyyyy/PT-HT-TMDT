@@ -367,23 +367,75 @@
                         
                         <div>
                             <form action="" method="post">
-                                <br><br>
-                                <label >Ðánh giá sản phẩm <input type="text" id="ten_sp" name="ten_sp" value="<%= p.getTitle() %>" readonly>:</label>
-                                <br><br>
-                                <input type="text" name="id_u" value="<%= tmp.getId()%>" hidden="true">
-                                <input type="text" name="id_p" value="<%= p.getId()%>" hidden="true">
-                                <input type="text" id="text_danh_gia" name="content" placeholder="Mời bạn để lại bình luận"  ><br>
-                                <input type="radio" id="1sao" name="star" value="1">
-                                <label >1 Sao</label><br>
-                                <input type="radio" id="2sao" name="star" value="2">
-                                <label >2 Sao</label><br>
-                                <input type="radio" id="3sao" name="star" value="3">
-                                <label >3 Sao</label><br>
-                                <input type="radio" id="3sao" name="star" value="4">
-                                <label >4 Sao</label><br>
-                                <input type="radio" id="3sao" name="star" value="5">
-                                <label >5 Sao</label><br>
-                                <input type="submit" value="Gửi">
+<!--                                <br><br>-->
+<!--                                <label >Ðánh giá sản phẩm <input type="text" id="ten_sp" name="ten_sp" value="<= p.getTitle() %>" readonly>:</label>-->
+                                 <br>
+                                <input type="text" name="id_u" hidden="true" value="<%= tmp.getId()%>"> 
+                                <input type="text" name="id_p" hidden="true" value="<%= p.getId()%>" > 
+                                <textarea id="contentRate" rows="" cols="" name="content" placeholder="Hãy để lại đánh giá của bạn" style="max-width: 800px; min-width: 800px; height: 100px;"></textarea>
+                                <!-- <input type="text" id="text_danh_gia" name="content" placeholder="Mời bạn để lại bình luận"  ><br> -->
+                                <br>
+                                <p style="text-align: center; font-size: 16px; font-weight: bold;">Bạn nghĩ sao về sản phẩm này?</p>
+                                <div id="rateContainer" style="display: flex; justify-content: center;">
+                                    <div style="display: flex; align-items: baseline; margin-right: 20px;">
+                                        <input type="radio" id="1sao" name="star" value="1">
+                                        <div class="starContainer">
+                                            <i class="fa fa-star"></i>   
+                                            <i class="fa fa-star-o"></i>   
+                                            <i class="fa fa-star-o"></i>   
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                        </div> 
+                                    </div>
+                                    <br>
+                                    <div style="display: flex; align-items: baseline; margin-right: 20px;">
+                                        <input type="radio" id="2sao" name="star" value="2">
+                                        <div class="starContainer">
+                                            <i class="fa fa-star"></i>   
+                                            <i class="fa fa-star"></i>   
+                                            <i class="fa fa-star-o"></i>   
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                        </div> 
+                                    </div>
+                                    <br>
+                                    <div style="display: flex; align-items: baseline; margin-right: 20px;">
+                                        <input type="radio" id="3sao" name="star" value="3">
+                                        <div class="starContainer">
+                                            <i class="fa fa-star"></i>   
+                                            <i class="fa fa-star"></i>   
+                                            <i class="fa fa-star"></i>   
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                        </div> 
+                                    </div>
+                                    <br>
+                                    <div style="display: flex; align-items: baseline; margin-right: 20px;">
+                                        <input type="radio" id="4sao" name="star" value="4">
+                                        <div class="starContainer">
+                                            <i class="fa fa-star"></i>   
+                                            <i class="fa fa-star"></i>   
+                                            <i class="fa fa-star"></i>   
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>
+                                        </div> 
+                                    </div>
+                                    <br>
+                                    <div style="display: flex; align-items: baseline; margin-right: 20px;">
+                                        <input type="radio" id="5sao" name="star" value="5">
+                                        <div class="starContainer">
+                                            <i class="fa fa-star"></i>   
+                                            <i class="fa fa-star"></i>   
+                                            <i class="fa fa-star"></i>   
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div> 
+                                    </div>
+                                    <br>
+                                </div>
+                                <div style="display: flex; justify-content: center;">
+                                    <input id="btnSubmit" type="submit" value="Gửi">
+                                </div>
                             </form>
                         </div>
                         <%
@@ -541,6 +593,30 @@
             .banner{
                 margin-bottom: 55px;
             }
+            
+                #btnSubmit{
+                    background: #151f3c;
+                    color: white;
+                    border-radius: 3px;
+                    width: 110px;
+                    height: 45px;
+                    font-size: 17px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    margin-top: 20px;
+                }
+                #rateContainer{
+                    margin-top: 10px;
+                }
+                #contentRate{
+                    font-family: arial;
+                    padding: 10px;
+                    font-size: 14px;
+                }
+                .starContainer{
+                    margin-left: 2px;
+                }
+            </style>
         </style>
         <script src="js/back-to-top.js"></script>
         <script type="text/javascript">
